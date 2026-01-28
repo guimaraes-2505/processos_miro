@@ -1,0 +1,172 @@
+# Configuração de Ícones BPMN
+# Sistema: Processos_Miro
+# Versão: 2.0
+# Data: 2026-01-28
+
+# =============================================================================
+# MAPEAMENTO: Tipo BPMN → Arquivo SVG
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# TASKS (Tarefas - Retângulos)
+# -----------------------------------------------------------------------------
+tasks:
+  # Tarefa genérica (fallback)
+  task: "tasks/task.svg"
+
+  # Tarefas por tipo
+  user_task: "tasks/user-task.svg"
+  service_task: "tasks/service-task.svg"
+
+  # Subprocessos
+  subprocess: "tasks/subprocess.svg"
+
+# -----------------------------------------------------------------------------
+# EVENTS (Eventos - Círculos)
+# -----------------------------------------------------------------------------
+events:
+  # Eventos de início
+  start_event: "events/start-event.svg"
+  start_timer_event: "events/start-timer-event.svg"
+  start_message_event: "events/start-message-event.svg"
+  start_conditional_event: "events/start-conditional-event.svg"
+  start_error_event: "events/start-error-event.svg"
+  start_signal_event: "events/start-signal-event.svg"
+  start_multiple_event: "events/start-multiple-event.svg"
+
+  # Eventos intermediários
+  intermediate_timer_event: "events/intermediate-timer-event.svg"
+  intermediate_message_event: "events/intermediate-message-event.svg"
+  intermediate_conditional_event: "events/intermediate-conditional-event.svg"
+  intermediate_signal_event: "events/intermediate-signal-event.svg"
+  intermediate_compensation_event: "events/intermediate-compensation-event.svg"
+  intermediate_multiple_event: "events/intermediate-multiple-event.svg"
+  intermediate_link_catch_event: "events/intermediate-link-catch-event.svg"
+  intermediate_link_throw_event: "events/intermediate-link-throw-event.svg"
+  intermediate_cancel_event: "events/intermediate-cancel-event.svg"
+
+  # Eventos de fim
+  end_event: "events/end-event.svg"
+  end_message_event: "events/end-message-event.svg"
+  end_signal_event: "events/end-signal-event.svg"
+  end_multiple_event: "events/end-multiple-event.svg"
+
+  # Atalhos (para compatibilidade)
+  timer_event: "events/start-timer-event.svg"
+  message_event: "events/start-message-event.svg"
+  error_event: "events/start-error-event.svg"
+
+# -----------------------------------------------------------------------------
+# GATEWAYS (Decisões - Losangos)
+# -----------------------------------------------------------------------------
+gateways:
+  # Gateway genérico (fallback)
+  gateway: "gateways/exclusive-gateway.svg"
+
+  # Gateways por tipo
+  exclusive_gateway: "gateways/exclusive-gateway.svg"
+  inclusive_gateway: "gateways/inclusive-gateway.svg"
+  parallel_gateway: "gateways/parallel-gateway.svg"
+  event_based_gateway: "gateways/event-based-gateway.svg"
+
+# -----------------------------------------------------------------------------
+# CONFIGURAÇÕES GERAIS
+# -----------------------------------------------------------------------------
+config:
+  # Caminho base para os ícones (relativo ao diretório raiz do projeto)
+  base_path: "data/icons"
+
+  # Modo de renderização
+  # Opções: "svg", "emoji", "hybrid"
+  mode: "svg"
+
+  # Tamanho padrão dos ícones (em pixels)
+  icon_size: 24
+
+  # Tamanhos específicos por tipo de elemento
+  icon_sizes:
+    task: 20
+    event: 16
+    gateway: 18
+
+  # Posicionamento do ícone
+  icon_position:
+    task: "left"        # À esquerda do texto
+    event: "inside"     # Dentro do círculo
+    gateway: "center"   # Centralizado no losango
+
+  # Estratégia de fallback (caso SVG não seja encontrado)
+  # Opções: "none", "emoji", "text", "default_icon"
+  fallback_strategy: "emoji"
+
+  # Validação
+  validation:
+    max_file_size_kb: 5
+    required_viewbox: true
+    validate_xml: true
+
+# -----------------------------------------------------------------------------
+# METADADOS
+# -----------------------------------------------------------------------------
+metadata:
+  # Cores padrão BPMN
+  colors:
+    task: "#E3F2FD"
+    event_start: "#C8E6C9"
+    event_end: "#FFCDD2"
+    event_intermediate: "#FFFFFF"
+    gateway: "#FFF9C4"
+    annotation: "#FFF"
+
+  # Mapeamento de tipos de metadata para tipos BPMN
+  type_mapping:
+    event_type:
+      start: "start_event"
+      end: "end_event"
+      timer: "timer_event"
+      message: "message_event"
+      error: "error_event"
+      signal: "start_signal_event"
+      conditional: "start_conditional_event"
+      multiple: "start_multiple_event"
+
+    gateway_type:
+      exclusive: "exclusive_gateway"
+      inclusive: "inclusive_gateway"
+      parallel: "parallel_gateway"
+      event_based: "event_based_gateway"
+
+    task_type:
+      user: "user_task"
+      service: "service_task"
+      task: "task"
+
+# =============================================================================
+# NOTAS DE USO
+# =============================================================================
+#
+# 1. ESTRUTURA DE ARQUIVOS:
+#    data/icons/
+#    ├── tasks/
+#    │   ├── task.svg            (fallback genérico)
+#    │   ├── user-task.svg
+#    │   ├── service-task.svg
+#    │   └── subprocess.svg
+#    ├── events/
+#    │   ├── start-event.svg
+#    │   ├── start-timer-event.svg
+#    │   ├── ... (20 SVGs de eventos)
+#    │   └── end-multiple-event.svg
+#    ├── gateways/
+#    │   ├── exclusive-gateway.svg
+#    │   ├── inclusive-gateway.svg
+#    │   ├── parallel-gateway.svg
+#    │   └── event-based-gateway.svg
+#    ├── icons.yaml          ← Este arquivo
+#    └── README.md
+#
+# 2. RENDERIZAÇÃO NO MIRO:
+#    Os ícones são renderizados via URL pública (GitHub raw).
+#    Configure ICON_BASE_URL em config/settings.py
+#
+# =============================================================================
