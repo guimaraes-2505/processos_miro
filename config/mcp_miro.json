@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "miro": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-miro"
+      ],
+      "env": {
+        "MIRO_API_TOKEN": "${MIRO_API_TOKEN}"
+      }
+    }
+  }
+}
